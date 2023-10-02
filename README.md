@@ -32,3 +32,6 @@ python3 main.py
 Chequear los resultados en MongoDB
 ![img.png](Imagenes/img.png)
 
+## Esquema de ejecución
+![img.png](Imagenes/ESQUEMA.png)
+
