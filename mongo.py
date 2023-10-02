@@ -26,14 +26,3 @@ class MongoConnect:
 
 if __name__ == "__main__":
     MongoConnect().test_connection()
-
-MONGO_URI = 'mongodb+srv://user:password@cluster0.f5vxk.mongodb.net/?retryWrites=true&w=majority'
-ca = certifi.where()
-
-def dbConnection():
-    try:
-        client = MongoClient(MONGO_URI, tlsCAFile=ca)
-        db = client["dbb_products_app"]
-    except ConnectionError:
-        print('Error de conexión con la bdd')
-    return db
