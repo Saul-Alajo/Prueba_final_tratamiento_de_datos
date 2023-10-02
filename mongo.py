@@ -12,7 +12,7 @@ class MongoConnect:
         password= os.getenv('MONGO_PASS')
         db_hostname = os.getenv('MONGO_HOST')
 
-        MONGO_URI  = f"mongodb+srv://{user}:{password}@{db_hostname}/?retryWrites=true&w=majority"
+        uri = f"mongodb+srv://{user}:{password}@{db_hostname}/?retryWrites=true&w=majority"
         # Create a new client and connect to the server
         self.client = MongoClient(uri,tlsCAFile=ca)
 
@@ -26,3 +26,14 @@ class MongoConnect:
 
 if __name__ == "__main__":
     MongoConnect().test_connection()
+
+MONGO_URI = 'mongodb+srv://user:password@cluster0.f5vxk.mongodb.net/?retryWrites=true&w=majority'
+ca = certifi.where()
+
+def dbConnection():
+    try:
+        client = MongoClient(MONGO_URI, tlsCAFile=ca)
+        db = client["dbb_products_app"]
+    except ConnectionError:
+        print('Error de conexión con la bdd')
+    return db
